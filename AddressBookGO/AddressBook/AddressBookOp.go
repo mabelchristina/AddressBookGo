@@ -5,12 +5,13 @@ import (
 )
 
 var AddressArray []Contact
+var contactMap map[string]Contact
 
 func AddressBookOperation() {
 	var input int
 	for ok := true; ok; ok = (input != 2) {
 		var choice int
-		fmt.Println(" Enter 1 for create contact \n Enter 2  for display contact \n Enter 3 for updating contact\n Enter 4 for deleting contact\n enter 5 for exiting loop")
+		fmt.Println(" Enter 1 for create contact \n Enter 2  for display contact \n Enter 3 for updating contact\n Enter 4 for deleting contact\n enter 5 for entering multi contact\nenter 6 for exiting loop")
 		fmt.Println("Enter your choice:")
 		fmt.Scanln(&choice)
 
@@ -24,6 +25,8 @@ func AddressBookOperation() {
 		case 4:
 			DeleteContact()
 		case 5:
+			MultiContact()
+		case 6:
 			fmt.Println("Exting the loop")
 			input = 2
 		}
@@ -104,4 +107,15 @@ func DeleteContact() {
 			fmt.Println("Record deleted contact is", AddressArray)
 		}
 	}
+}
+func MultiContact() {
+
+	var num int
+	fmt.Println("Enter No of contacts you need to add")
+	fmt.Scanln(&num)
+	for num > 0 {
+		CreateContact()
+		num--
+	}
+
 }
