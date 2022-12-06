@@ -1,12 +1,17 @@
 package addressbook
-import(
-	"fmt"
-)
+
+import ()
 
 type Contact struct {
-	Id   	  int
-	FirstName string 
-	LastName  string 
+	FirstName string
+	LastName  string
 	Email     string
-	Phone     string 
+	Phone     string
+}
+
+func New(firstname, lastname, email, phone string) Contact {
+	c := Contact{
+		firstname, lastname, email, phone,
+	}
+	return c
 }
