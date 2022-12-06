@@ -6,12 +6,34 @@ import (
 
 var AddressArray []Contact
 
+func AddressBookOperation() {
+	var input int
+	for ok := true; ok; ok = (input != 2) {
+		var choice int
+		fmt.Println(" Enter 1 for create contact \n Enter 2  for display contact \n Enter 3 for updating contact\n Enter 4 for deleting contact\n enter 5 for exiting loop")
+		fmt.Println("Enter your choice:")
+		fmt.Scanln(&choice)
+
+		switch choice {
+		case 1:
+			CreateContact()
+		case 2:
+			DisplayContact()
+		case 3:
+			UpdateContact()
+		case 4:
+			DeleteContact()
+		case 5:
+			fmt.Println("Exting the loop")
+			input = 2
+		}
+
+	}
+
+}
 
 func CreateContact() {
-	var length int
-	fmt.Println("Enter the name of contact add")
-	fmt.Scanln(&length)
-for a,_ := range length()
+
 	var firstname, lastname, email, phone string
 
 	fmt.Println("Enter First name")
@@ -66,9 +88,20 @@ func UpdateContact() {
 				AddressArray[i].Phone = phone
 
 			}
-
+			DisplayContact()
 		}
-		fmt.Println("No person found")
 	}
 }
 
+func DeleteContact() {
+	var name string
+	fmt.Println("Enter the name of person to delete")
+	fmt.Scanln(&name)
+
+	for i := range AddressArray {
+		if AddressArray[i].FirstName == name {
+			AddressArray = nil
+			fmt.Println("Record deleted contact is", AddressArray)
+		}
+	}
+}
